@@ -1,0 +1,9 @@
+*.pyc
+*~
+__pycache__
+.idea
+venv
+Commands.txt
+task.txt
+.evn
+.json

@@ -1,0 +1,21 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %} edit {% endblock %}
+
+{% block content %}
+
+<h3>Добавление публикации</h3>
+
+<!--Дата публикации: {{ post.dateCreated|date:'d-m-Y H:i' }}-->
+
+<!-- Форма для добавления -->
+<form method="POST" name="edit">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Добавить статью">
+</form>
+<a href="/news/">Назад ко всем статьям</a>  <br>
+
+{% endblock %}

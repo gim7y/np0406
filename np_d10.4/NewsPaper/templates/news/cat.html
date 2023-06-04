@@ -1,0 +1,26 @@
+{% block content %} 
+
+{% if user not in subscribers %}
+<div>
+    <em>
+        Подписаться на категорию 
+        <strong> {{ cat.name }} ? </strong>
+    </em>
+    <button>
+        <a href = "{% url 'news:subscribe' cat.id %}" > Подписаться !</a>
+    </button>
+</div>
+{% else %}
+<div>
+    <em>
+        Отписаться от категории 
+        <strong> {{ cat.name }} ? </strong>
+    </em>
+    <button>
+        <a href = "{% url 'news:unsubscribe' cat.id %}">Отписаться!</a>
+    </button>
+</div>
+{% endif %}
+
+{% include 'news/posts.html' %}
+{% endblock content %}

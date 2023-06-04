@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Еженедельная рассылка</title>
+</head>
+
+<body>
+    <h3>Добрый день!
+        {{ user.username }}, ниже вы найдете новые статьи {{ post.author }}
+        выбранной категории за последнюю неделю {{ week_number_last }}.</h3>
+
+    <p> Чтобы прочитать статью, нажмите на ссылку:
+        {% for post in week_post %}
+        - - -
+            <a href="http://127.0.0.1:8000{{ post.get_absolute_url }}"><h3>{{ post.title }}</h3> </a>
+            {{ post.preview|truncatechars:30 }}
+            Автор: {{post.author}}
+        {% endfor %}
+    </p>
+</body>

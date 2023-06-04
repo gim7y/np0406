@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1> Новая статья уважаемого {{ post.author }} из выбранной категории.</h1>
+  {% for post in week_post %}
+            - - -
+    <h2>Заголовок: {{ post.title }} </h2>
+    <p>{{ post.preview|truncatechars:30 }}. Автор: {{post.author}}</p>
+
+    <h3>По ссылке можно прочить полную версию:</h3>
+    <p><a href="http://127.0.0.1:8000{{ activate_url }}"></a></p>
+  {% endfor %}
+
+</body>
+</html>

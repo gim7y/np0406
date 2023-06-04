@@ -1,0 +1,40 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+News Публикация "{{ post.title|censor:"'" }}"
+{% endblock title %}
+
+<!-- на странице выводим саму новость, id которого было передано
+ в адрес -->
+{% block content %}
+  <h3>Публикация: {{ post.title|censor:"'" }}</h3>
+  {{ post.text|censor:"'" }}
+  <h6>Опубликовано {{ post.dateCreation|date:'d M Y H:i' }}</h6>
+
+<!--{% if is_paginated %}-->
+
+<!--    &lt;!&ndash; Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу &ndash;&gt;-->
+<!--    {% if page_obj.has_previous %}-->
+<!--        <a href="?page=1">First</a>-->
+<!--        <a href="?page={{ page_obj.previous_page_number }}"><<<</a>-->
+<!--    {% endif %}-->
+
+<!--    &lt;!&ndash; Показываем только текущую страницу и ближайшие к ней, чтобы список не тянулся и не захламлял страницу &ndash;&gt;-->
+<!--    {% for num in page_obj.paginator.page_range %}-->
+<!--        {% if page_obj.number == num %}-->
+<!--            <a>{{ num }}</a>-->
+<!--        {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}-->
+<!--            <a href="?page={{ num }}">{{ num }}</a>-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+
+<!--    &lt;!&ndash; Если есть следующая страница, то даём ссылку на неё и на самую последнюю страницу &ndash;&gt;-->
+<!--    {% if page_obj.has_next %}-->
+<!--        <a href="?page={{ page_obj.next_page_number }}">>>></a>-->
+<!--        <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>-->
+<!--    {% endif %}-->
+<!--{% endif %}-->
+
+
+<!--{% endblock content %}-->

@@ -1,0 +1,36 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% include 'flatpages/head_title.html' %}
+
+{% block content %}
+
+{% if news %}
+<h3> Статьи рубрики {{ cat.name }}</h3>
+{% for post in news %}
+
+{#% include 'news/details.html' %#}
+
+<p>
+<h5><em>{{ post.title|censor:"'" }} </em> <br>
+  {{ post.text|censor:"'" }} <br>
+  *** *** </h5></p>
+{% endfor %}
+
+{% else %}
+<h2> No News yet </h2>
+{% endif %}
+
+{% for c in category_list %}
+{{ c.name }}
+
+{#% include 'news/inc/buttons.html' %#}
+
+{% endfor %}
+
+<a href="/news/"> Все статьи </a><br>
+
+<!--<a href="{% url 'news:cat_detail' cat.id  %}"> Рубрики </a> <br>-->
+
+<!--{% include 'news/pagination.html' %}-->
+{% endblock content %}

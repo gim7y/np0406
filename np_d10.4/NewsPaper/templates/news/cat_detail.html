@@ -1,0 +1,28 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block title %} News - Category list
+{% endblock %}
+
+{% block content %}
+    <h1>Category List</h1>
+
+    {% if categorys %}
+    {% for category in categorys %}
+    {{ category }}
+    {% for post in category.all %}
+        {{ post.text|censor:"'" }}
+    {{ post }}
+    {% endfor %}
+    {% endfor %}
+
+
+    {% else %}
+    <p>There are no category </p>
+    {% endif %}
+<!--    <a href="{{ cat.get_absolute_url }}">{{ cat.name }}{{ post.author}} </a>-->
+
+
+    <a href="/news/"> Все статьи </a>
+
+{% endblock %}

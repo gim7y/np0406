@@ -1,0 +1,32 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% block title %} Category {% endblock %}
+
+{% block content %}
+
+<div class="subscribe">
+{% if category.id %}
+
+    {% comment %}
+
+    <em>Subscribe to {{ category.id }}?</em>
+    <button><a href="{% url 'news:subscribe' category.id %}" class="button button-outline">Подписаться</a></button>
+
+    {% endcomment %}
+
+    <h3>Подписаться на категорию <strong>{{ category.name }}?</strong></h3>
+    <h4><button> <a href="{% url 'subscribe' category.id %}"> Подписаться </a></button></h4>
+
+{% endif %}
+    <br>
+    <a href="{% url 'categories' $}">Отобразить все каты !! </a>
+
+</div>
+
+{% include 'news/posts.html' %}  # категорию передают через инклюду
+
+<br>
+<br>
+<h4><a href="/news/"> Вернуться к новостям </a></h4>
+
+{% endblock content %}

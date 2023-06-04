@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container"></div>
+    <h2>Страница авторизованного пользователя {{request.user.username}} </h2>
+<!--    <div> Здесь может содержаться персональная информация для каждого пользователя-->
+
+
+
+    <div class="row">
+    {% if is_not_author %}
+    <div class="column">
+        <form method="post" action="{% url 'sign:upgrade' %}">
+            {% csrf_token %}
+            <button type="submit" class="button"> Make me an Author </button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="column">
+        <a href="{% url 'sign:logout' %}" class="button-outline">Logout<br>
+        </a><br>
+
+    </div>
+</div>
+    <button> <a href="news/"> Перейти к статьям </a></button>
+
+{% endblock %}

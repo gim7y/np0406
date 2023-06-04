@@ -1,0 +1,16 @@
+{% load custom_filters %}
+
+<h3>
+  <a href="{% url 'details' %}">
+    {{ post.title|censor:"'" }}
+  </a>
+</h3>
+
+<p class="details">
+    By <span class="author">{{ post.author }}</span>
+    on <span class="date">{{ post.dateCreation }}</span>
+    Category:
+    {% for c in post.category.all %}
+    <a href="{% url 'news:category' c.id %}" class="category">{{ c.name }}</a>
+    {% endfor %}
+</p>

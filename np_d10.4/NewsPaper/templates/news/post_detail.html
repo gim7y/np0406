@@ -1,0 +1,39 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %} Post list = news {% endblock title %}
+ 
+{% block content %}
+<table>
+    <thead>
+        <th>Автор публикации</th>
+        <th>Заголовок</th>
+        <th>Опубликовано</th>
+        <th>Текст</th>
+        <th>Категория</th>
+    </thead>
+    <tr>
+        <td>{{ post.author.authorUser|title }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.dateCreation|date:'d M Y H:i' }}</td>
+        <td>{{ post.text|censor:"'" }}</td>
+        <td>
+            {% for c in post.postCategory.values %}
+            <a href="{% url 'news:category' c.id %}">{{c.name}}</a>
+            {% endfor %}
+        </td>
+
+    </tr>
+</table>
+{% comment %}
+{% if is_not_subscribe %}
+<!--GET запрос передает в наше представление значение категории, переменная post.category.id, -->
+<!--которая в дальнейшем необходима для добавления подписчиков-->
+<button><a href="subscribe/?pk={{ news.PostCategory.id }}">Подписаться</a></button>
+{% endif %}
+{% endcomment %}
+
+<a href="/news/"> Все статьи </a>
+
+{% endblock content %}

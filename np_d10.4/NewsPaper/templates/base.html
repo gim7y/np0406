@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Для полноценной работоспособности без
+дополнительной кастомизации название базового шаблона должно быть именно
+base.html. Этого достаточно для регистрации и входа по почте. -->
+<html>
+    <head>
+        <title>{% block head_title %}{% endblock head_title %}</title>
+    </head>
+    <body>
+        {% block menu %}
+            {% include 'flatpages/head_title.html' %}
+        {% endblock menu %}
+        {% block body %}
+        {% block content %}
+        {% endblock content %}
+        {% endblock body %}
+        {% block extra_body %}
+        {% endblock extra_body %}
+    </body>
+</html>
